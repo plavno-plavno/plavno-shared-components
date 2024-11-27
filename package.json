@@ -2,6 +2,21 @@
   "name": "plavno-shared-components",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "assets/style.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./assets/style.css": "./dist/assets/style.css"
+  },
   "dependencies": {
     "@cloudflare/stream-react": "^1.8.0",
     "@hookform/resolvers": "^3.9.0",
@@ -59,8 +74,9 @@
     "source-map-explorer": "^2.5.2",
     "stream-browserify": "^3.0.0",
     "timers-browserify": "^2.0.12",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "vite": "^5.4.10",
+    "vite-plugin-dts": "^4.3.0",
     "webpack": "^5.76.0"
   },
   "husky": {

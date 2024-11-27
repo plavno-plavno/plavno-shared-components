@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import dts from 'vite-plugin-dts';
 import path from 'node:path';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), dts()],
   server: {
     host: 'localhost',
     port: 3000,
@@ -25,5 +26,47 @@ export default defineConfig({
   },
   build: {
     sourcemap: false,
-  }
+    lib: {
+      entry: 'src/index.ts',
+      name: 'SharedComponents',
+      fileName: 'index',
+    },
+    rollupOptions: {
+      external: [
+        '@cloudflare/stream-react',
+        '@hookform/resolvers',
+        '@reduxjs/toolkit',
+        '@types/d3-scale-chromatic',
+        'antd',
+        'axios',
+        'date-fns',
+        'moment',
+        'normalize.css',
+        'query-string',
+        'react',
+        'react-dom',
+        'react-content-loader',
+        'react-custom-scrollbars-2',
+        'react-hook-form',
+        'react-redux',
+        'react-router',
+        'react-router-dom',
+        'redux',
+        'yup',
+      ],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+        assetFileNames: 'assets/[name][extname]',
+      },
+    },
+  },
+  css: {
+    modules: {
+      scopeBehaviour: 'local',
+      generateScopedName: '[name]__[local]___[hash:base64:5]',
+    },
+  },
 });

@@ -7,6 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Jumbotron from 'components/shared/Jumbotron';
 import 'antd/dist/reset.css';
+import 'assets/styles.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

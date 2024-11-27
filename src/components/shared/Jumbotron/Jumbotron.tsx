@@ -1,5 +1,5 @@
 import React, { ReactNode, CSSProperties } from 'react';
-import './styles.css';
+import styles from './Jumbotron.module.scss';
 
 interface JumbotronProps {
   title?: string;
@@ -21,12 +21,12 @@ const Jumbotron: React.FC<JumbotronProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`jumbotron ${className}`} style={style}>
-      {image && <img src={image} alt={title || 'Jumbotron image'} className="jumbotron-image" />}
-      <div className="jumbotron-content">
-        {title && <h1 className="jumbotron-title">{title}</h1>}
-        {subtitle && <h2 className="jumbotron-subtitle">{subtitle}</h2>}
-        {description && <p className="jumbotron-description">{description}</p>}
+    <div className={`${styles.container} ${className}`} style={style}>
+      {image && <img src={image} alt={title || 'Jumbotron image'} className={styles.image} />}
+      <div className={styles.content}>
+        {title && <h1 className={styles.title}>{title}</h1>}
+        {subtitle && <h2 className={styles.subtitle}>{subtitle}</h2>}
+        {description && <p className={styles.description}>{description}</p>}
         {children}
       </div>
     </div>
